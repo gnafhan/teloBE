@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\SeasonController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
@@ -42,6 +43,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/characters/edit/{id}', [CharacterController::class, 'edit'])->name('character.edit');
     Route::put('/characters/edit/{id}', [CharacterController::class, 'update'])->name('character.update');
     Route::delete('/characters/delete/{id}', [CharacterController::class, 'destroy'])->name('character.delete');
+    Route::resource('seasons', SeasonController::class);
     Route::get('/ecommerce/shop', function () {
         return view('pages/ecommerce/shop');
     })->name('shop');
